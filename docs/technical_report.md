@@ -35,6 +35,9 @@ failure.
 3. Keep the implementation easy to read and verify: no custom libraries, classes, or
    generic abstractions — just flags and priority-ordered `if`/`else if` checks.
 
+   <img width="630" height="258" alt="image" src="https://github.com/user-attachments/assets/1a54bcf6-4193-41a2-bc1d-a1ca70fcec01" />
+
+
 ## 4. System Architecture
 
 ```
@@ -49,6 +52,9 @@ Sensor / Input -> Interrupt / Poll -> Priority Check (loop) -> Task Function -> 
 - **Task Function**: A plain function (e.g. `runFireTask()`) performs the actual work.
 - **Output Devices**: Buzzer, LEDs, 16x2 LCD.
 
+- <img width="888" height="792" alt="image" src="https://github.com/user-attachments/assets/b8fc3db9-e637-4f26-b4af-b08731f001bf" />
+<img width="1017" height="255" alt="image" src="https://github.com/user-attachments/assets/6e829c1c-cc25-4911-af5b-3448db7bc25f" />
+
 ## 5. Hardware Components
 
 | Component | Role |
@@ -60,6 +66,9 @@ Sensor / Input -> Interrupt / Poll -> Priority Check (loop) -> Task Function -> 
 | Buzzer | Alarm output |
 | LEDs (x2) | Fire / motion status indicators |
 | 16x2 LCD (HD44780) | Routine status display, lowest priority |
+
+<img width="387" height="417" alt="image" src="https://github.com/user-attachments/assets/3475da47-8e92-4d88-b83f-640474138ee4" />
+
 
 Full pin mapping is documented in `docs/wiring.md`.
 
@@ -88,6 +97,7 @@ Full pin mapping is documented in `docs/wiring.md`.
 4. **Task Execution**: The first ready task's function runs to completion before the loop
    re-checks priorities, so higher-priority events are never missed, only briefly
    deferred.
+<img width="267" height="147" alt="image" src="https://github.com/user-attachments/assets/8ee30a13-97c1-4f13-bfc6-3cd03cd66c8f" />
 
 ## 8. Software Design
 
@@ -96,6 +106,9 @@ Full pin mapping is documented in `docs/wiring.md`.
 - No external scheduler library or custom data structures are used — priority is
   expressed directly as the order of `if`/`else if` checks, keeping the code simple and
   easy to verify.
+
+  <img width="571" height="187" alt="image" src="https://github.com/user-attachments/assets/a587aa12-3896-4d19-8824-c970f2384408" />
+
 
 ## 9. Results
 
@@ -106,6 +119,8 @@ Full pin mapping is documented in `docs/wiring.md`.
   priority ordering.
 - The implementation fits comfortably within the ATmega328P's resources (2KB SRAM, 16MHz
   clock) with no additional libraries beyond `LiquidCrystal`.
+  <img width="571" height="205" alt="image" src="https://github.com/user-attachments/assets/bfc05e10-dad3-43de-aa70-0c13e4831acd" />
+
 
 ## 10. Applications
 
@@ -115,6 +130,8 @@ Full pin mapping is documented in `docs/wiring.md`.
   telemetry logging.
 - **Medical Systems**: Ensuring vital-sign monitors and patient alerts are processed
   without queue lag.
+  <img width="487" height="407" alt="image" src="https://github.com/user-attachments/assets/1fe9b2c9-1617-40a4-b3d0-d63be479e2b7" />
+
 
 ## 11. Conclusion
 
